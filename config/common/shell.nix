@@ -2,6 +2,7 @@
   programs = {
     bash = {
       enable = true;
+      package = null;
       enableCompletion = true;
     };
     fish = {
