@@ -17,11 +17,4 @@
     systemd.enable = true;
     settings = localLib.mkSymlinkToSourcePath ./settings.json;
   };
-  systemd.user.services.noctalia-shell =
-    let
-      cfg = config.programs.noctalia-shell;
-    in
-    lib.mkIf cfg.systemd.enable {
-      # Install.WantedBy = lib.mkForce [ "niri.service" ];
-    };
 }
