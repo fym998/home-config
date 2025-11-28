@@ -34,7 +34,7 @@
       homeDirectory = "/home/${username}";
     in
     rec {
-      inherit pkgs self;
+      inherit pkgs self inputs;
 
       mkLib = import ./lib;
 
