@@ -8,6 +8,9 @@
       nixfmt
 
       tree
+
+      htop
+      btop
       ;
   };
 }
