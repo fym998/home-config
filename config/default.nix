@@ -1,7 +1,4 @@
+{ localLib, ... }:
 {
-  imports = [
-    ./common
-    ./gui
-    ./test.nix
-  ];
+  imports = localLib.lsSubmodule ./.;
 }
