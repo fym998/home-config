@@ -6,6 +6,7 @@
         Name = "fym998";
         email = "61316972+fym998@users.noreply.github.com";
       };
+      init.defaultBranch = "main";
       # https://forums.whonix.org/t/git-users-enable-fsck-by-default-for-better-security/2066
       transfer.fsckobjects = true;
       fetch.fsckobjects = true;
