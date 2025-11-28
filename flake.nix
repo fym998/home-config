@@ -21,14 +21,20 @@
   };
 
   outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
     let
       system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
       username = "fym";
       homeDirectory = "/home/${username}";
     in
     rec {
-      pkgs = nixpkgs.legacyPackages.${system};
+      inherit pkgs self;
 
       mkLib = import ./lib;
 
@@ -49,7 +55,7 @@
         inherit pkgs;
 
         extraSpecialArgs = {
-          inherit inputs localLib;
+          inherit self inputs localLib;
         };
 
         modules = [
