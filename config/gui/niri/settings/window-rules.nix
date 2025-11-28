@@ -34,5 +34,14 @@
       block-out-from = "screen-capture";
       # block-out-from = "screencast";
     }
+
+    {
+      matches = [
+        {
+          app-id = "Minecraft";
+        }
+      ];
+      open-maximized = true;
+    }
   ];
 }
