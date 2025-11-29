@@ -11,6 +11,8 @@
 
       htop
       btop
+
+      lesspass-cli
       ;
   };
 }
