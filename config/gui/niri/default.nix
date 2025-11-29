@@ -9,7 +9,6 @@
     inputs.niri-flake.homeModules.config
   ]
   ++ localLib.lsSubmodule ./settings;
-  programs.niri = {
-    package = pkgs.niri;
-  };
+
+  programs.niri.package = pkgs.niri;
 }
