@@ -70,6 +70,7 @@
 
         extraSpecialArgs = {
           inherit self inputs localLib;
+          pkgsFrom = builtins.mapAttrs (_: f: (f.packages or { }).${system} or { }) inputs;
         };
 
         modules = [

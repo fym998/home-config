@@ -1,3 +1,4 @@
+{ lib, pkgsFrom, ... }:
 {
   programs.git = {
     enable = true;
@@ -11,11 +12,16 @@
       transfer.fsckobjects = true;
       fetch.fsckobjects = true;
       receive.fsckobjects = true;
-      credential.helper = "/usr/lib/git-core/git-credential-libsecret";
+      credential.helper = lib.getExe pkgsFrom.fym998-nur.git-credential-libsecret;
     };
     signing = {
       key = "0xD7BC265823B30CC1";
       signByDefault = false;
     };
+  };
+
+  programs.gh = {
+    enable = true;
+    gitCredentialHelper.enable = true;
   };
 }
