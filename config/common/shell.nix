@@ -10,4 +10,8 @@
       enable = true;
     };
   };
+  home.shellAliases = {
+    "hms" = "home-manager switch";
+    "hmb" = "home-manager build";
+  };
 }
