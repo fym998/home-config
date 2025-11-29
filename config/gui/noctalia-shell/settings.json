@@ -39,6 +39,15 @@
         "widgets": {
             "center": [
                 {
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "id": "ActiveWindow",
+                    "maxWidth": 145,
+                    "scrollingMode": "hover",
+                    "showIcon": true,
+                    "useFixedWidth": false
+                },
+                {
                     "characterCount": 2,
                     "followFocusedScreen": false,
                     "hideUnoccupied": false,
@@ -64,15 +73,6 @@
                     "showMemoryUsage": true,
                     "showNetworkStats": true,
                     "usePrimaryColor": false
-                },
-                {
-                    "colorizeIcons": false,
-                    "hideMode": "hidden",
-                    "id": "ActiveWindow",
-                    "maxWidth": 145,
-                    "scrollingMode": "hover",
-                    "showIcon": true,
-                    "useFixedWidth": false
                 },
                 {
                     "hideMode": "hidden",
@@ -287,7 +287,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
-        "nightTemp": "5200"
+        "nightTemp": "5500"
     },
     "notifications": {
         "backgroundOpacity": 1,
