@@ -28,15 +28,24 @@
       ...
     }:
     let
+      # global
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      username = "fym";
-      homeDirectory = "/home/${username}";
-    in
-    rec {
-      inherit pkgs self inputs;
 
       mkLib = import ./lib;
+
+      # user
+      username = "fym";
+      homeDirectory = "/home/${username}";
+      homeConfigRoot = "${homeDirectory}/.config/home-manager";
+    in
+    rec {
+      inherit
+        pkgs
+        self
+        inputs
+        mkLib
+        ;
 
       localLib = mkLib rec {
         inherit pkgs;
@@ -46,7 +55,7 @@
         hmLib = import "${inputs.home-manager}/modules/lib" { inherit lib; };
 
         sourceRoot = {
-          source = "${homeDirectory}/.config/home-manager";
+          source = homeConfigRoot;
           inStore = ./.;
         };
       };
@@ -63,14 +72,7 @@
           ./modules
 
           {
-            home = {
-              inherit username homeDirectory;
-              stateVersion = "25.05"; # Do not change!
-            };
-
-            programs.home-manager = {
-              enable = true;
-            };
+            home = { inherit username homeDirectory; };
           }
         ];
       };
