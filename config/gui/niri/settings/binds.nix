@@ -14,6 +14,14 @@
       action = spawn "fuzzel";
       hotkey-overlay.title = "Run an Application: fuzzel";
     };
+    "Mod+B" = {
+      action = spawn "firefox";
+      hotkey-overlay.title = "Run an Application: Firefox";
+    };
+    "Mod+C" = {
+      action = spawn "code";
+      hotkey-overlay.title = "Run an Application: Visual Studio Code";
+    };
 
     # Screen reader toggle
     "Super+Alt+S" = {

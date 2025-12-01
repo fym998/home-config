@@ -60,7 +60,7 @@
 
         # Utilities
         "Mod+V".action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard";
-        "Mod+C".action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "calculator";
+        "XF86Calculator".action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "calculator";
         "Mod+L" = mkForce {
           action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock";
           hotkey-overlay.title = "Lock the Screen";
