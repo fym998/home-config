@@ -1,7 +1,15 @@
 {
   programs.niri.settings.layout = {
     background-color = "transparent";
-    gaps = 16;
+
+    gaps = 12;
+    struts = rec {
+      left = 0;
+      right = left;
+      top = 0;
+      bottom = 2;
+    };
+
     center-focused-column = "never";
 
     preset-column-widths = [
@@ -69,7 +77,7 @@
 
     shadow = {
       enable = true;
-      # draw-behind-window = true;
+      draw-behind-window = true;
       softness = 30;
       spread = 5;
       offset = {
