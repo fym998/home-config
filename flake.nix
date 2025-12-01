@@ -65,6 +65,11 @@
         };
       };
 
+      packages.${system} = pkgs.lib.packagesFromDirectoryRecursive {
+        inherit (pkgs) callPackage;
+        directory = ./pkgs;
+      };
+
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
