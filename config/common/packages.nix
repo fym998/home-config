@@ -6,6 +6,7 @@
 
       nil
       nixfmt
+      nix-tree
 
       tree
 
