@@ -1,17 +1,4 @@
-# 路径
-# 如果 maa_path 未设置，则使用默认值
-if [ -z "$maa_path" ]; then
-    maa_path="$HOME/Games/maa"
-fi
-maa_bin="$maa_path/MAA.exe"
-config_file="$maa_path/config/gui.json"
 
-echo "maa_path=$maa_path"
-echo "maa_bin=$maa_bin"
-echo "config_file=$config_file"
-
-maa_cmd="env GAMEID=maa umu-run $maa_bin"
-echo "maa_cmd=$maa_cmd"
 
 # 创建adb符号链接
 if ! ln -sf "$(which adb)" -t "$maa_path" -v; then
