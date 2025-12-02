@@ -1,25 +1,51 @@
 {
   lib,
-  android-tools,
-  callPackage,
-  zenity,
+  stdenvNoCC,
+  fetchurl,
   umu-launcher-wrapper,
-  writeShellApplication,
   maaPath,
+  android-tools,
+  zenity,
+  writeShellScriptBin,
+  imagemagick,
+  makeDesktopItem,
+  copyDesktopItems,
 }:
-writeShellApplication {
+stdenvNoCC.mkDerivation (finalAttrs: {
   name = "maa";
-  runtimeInputs = [
-    android-tools
-    zenity
-    umu-launcher-wrapper
+
+  dontUnpack = true;
+
+  icon512 = fetchurl {
+    url = "https://docs.maa.plus/images/maa-logo_512x512.png";
+    hash = "sha256-29AUkVyjpN+5Hh9izH5rqTdYSmgEoJyx5DsEieg13SY=";
+  };
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = "MAA";
+      exec = "${lib.getExe finalAttrs.script}";
+      icon = "maa";
+      comment = finalAttrs.meta.description;
+      desktopName = "MAA";
+      categories = [ "Game" ];
+    })
   ];
-  excludeShellChecks = [ "SC2181" ];
-  bashOptions = [
-    "nounset"
-    "pipefail"
+
+  nativeBuildInputs = [
+    copyDesktopItems
   ];
-  text = ''
+
+  script = writeShellScriptBin "maa" ''
+    set -euo pipefail
+    export PATH="${
+      builtins.concatStringsSep ":" (
+        map (p: "${p}/bin") [
+          android-tools
+          zenity
+        ]
+      )
+    }:$PATH"
     maa_path="${maaPath}"
     # 如果 maa_path 未设置，则使用默认值
     if [ -z "$maa_path" ]; then
@@ -36,4 +62,29 @@ writeShellApplication {
     echo "maa_cmd=$maa_cmd"
     ${builtins.readFile ./maa.sh}
   '';
-}
+
+  installPhase = ''
+    runHook preInstall
+
+    mkdir -p $out/bin
+    ln -s ${lib.getExe finalAttrs.script} $out/bin
+
+    mkdir -p $out/share/icons/hicolor/512x512/apps/
+    ln -s ${finalAttrs.icon512} $out/share/icons/hicolor/512x512/apps/maa.png
+    for size in 16 32 48 64 128 256; do
+      res="$size"x"$size"
+      mkdir -p $out/share/icons/hicolor/"$res"/apps/
+      ${lib.getExe imagemagick} \
+          $out/share/icons/hicolor/512x512/apps/maa.png \
+          -resize "$res" \
+          $out/share/icons/hicolor/"$res"/apps/maa.png
+    done
+
+    runHook postInstall
+  '';
+
+  meta = {
+    mainProgram = "maa";
+    description = "MAA Assistant Arknights 一款明日方舟游戏小助手";
+  };
+})

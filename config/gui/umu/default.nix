@@ -29,16 +29,17 @@
   config =
     let
       cfg = config.umu;
+      wrapper = pkgs.callPackage ./umu-launcher-wrapper.nix {
+        umu-launcher = cfg.package;
+        inherit (cfg) protonPath enableWayland;
+      };
     in
     {
       umu = {
         protonPath = "$HOME/.steam/steam/compatibilitytools.d/GE-Proton10-25";
-        eval.wrapper = pkgs.callPackage ./umu-launcher-wrapper.nix {
-          umu-launcher = cfg.package;
-          inherit (cfg) protonPath enableWayland;
-        };
+        eval.wrapper = wrapper;
       };
-      home.packages = [ cfg.eval.wrapper ];
+      home.packages = [ wrapper ];
     };
   imports = [
     (import ./apps config.umu.eval.wrapper)
