@@ -5,7 +5,7 @@
   protonPath,
   enableWayland ? true,
 }:
-writeShellScriptBin "umu" ''
+writeShellScriptBin "umu-run" ''
   if [ -z "$PROTONPATH" ]; then
       export PROTONPATH="${protonPath}"
   fi
