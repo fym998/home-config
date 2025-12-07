@@ -1,28 +1,44 @@
-[GroupOrder]
-0=Default
-
 [Groups/0]
+# Group Name
+Name=Gaming
+# Layout
 Default Layout=us
-DefaultIM=pinyin
-Name=Default
+# Default Input Method
+DefaultIM=keyboard-us
 
 [Groups/0/Items/0]
-Layout=
+# Name
 Name=keyboard-us
-
-[Groups/0/Items/1]
+# Layout
 Layout=
-Name=pinyin
-
-[Groups/0/Items/2]
-Layout=
-Name=mozc
 
 [Groups/1]
+# Group Name
+Name=Default
+# Layout
 Default Layout=us
+# Default Input Method
 DefaultIM=pinyin
-Name=Gaming
 
 [Groups/1/Items/0]
-Layout=
+# Name
 Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/1/Items/1]
+# Name
+Name=pinyin
+# Layout
+Layout=
+
+[Groups/1/Items/2]
+# Name
+Name=mozc
+# Layout
+Layout=
+
+[GroupOrder]
+0=Default
+1=Gaming
+
