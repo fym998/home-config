@@ -4,6 +4,7 @@
     enable = true;
     package = config.lib.genericLinux.nullIfEnable pkgs.alacritty;
     settings = {
+      general.import = [ "themes/noctalia.toml" ];
       window = {
         decorations = "None";
         padding = {
