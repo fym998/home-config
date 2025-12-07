@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgsFrom,
+  lib,
   localLib,
   ...
 }:
@@ -14,6 +15,11 @@
     enable = true;
     package = config.lib.genericLinux.wrapIfEnabled pkgsFrom.noctalia.default "qs -c noctalia-shell";
     systemd.enable = true;
-    settings = localLib.mkSymlinkToSource ./settings.json;
   };
+  xdg.configFile = lib.genAttrs' (localLib.lsFileRecursively ./config) (
+    file:
+    lib.nameValuePair "noctalia/${lib.removePrefix ((toString ./config) + "/") (toString file)}" {
+      source = localLib.mkSymlinkToSource file;
+    }
+  );
 }
