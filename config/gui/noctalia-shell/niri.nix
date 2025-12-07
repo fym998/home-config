@@ -54,15 +54,15 @@
           allow-when-locked = true;
         };
 
-        # Brightness
-        "XF86MonBrightnessUp" = mkForce {
-          action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase";
-          allow-when-locked = true;
-        };
-        "XF86MonBrightnessDown" = mkForce {
-          action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease";
-          allow-when-locked = true;
-        };
+        # # Brightness
+        # "XF86MonBrightnessUp" = mkForce {
+        #   action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase";
+        #   allow-when-locked = true;
+        # };
+        # "XF86MonBrightnessDown" = mkForce {
+        #   action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease";
+        #   allow-when-locked = true;
+        # };
 
         # Utilities
         "Mod+V" = {
@@ -73,6 +73,10 @@
         "Super+L" = mkForce {
           action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock";
           hotkey-overlay.title = "Lock the Screen";
+        };
+        "Mod+Space" = mkForce {
+          action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle";
+          hotkey-overlay.title = "Noctalia Launcher";
         };
       };
 
