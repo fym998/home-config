@@ -25,4 +25,5 @@
       source = localLib.mkSymlinkToSource file;
     }
   );
+  home.sessionVariables.QT_IM_MODULE = "fcitx";
 }
