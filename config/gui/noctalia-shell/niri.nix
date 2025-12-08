@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 {
-  programs.niri.settings = {
+  programs.niri.settings = lib.mkIf config.programs.noctalia-shell.enable {
     binds =
       with config.lib.niri.actions;
       let
@@ -66,7 +66,7 @@
 
         # Utilities
         "Mod+V" = {
-          action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "calculator";
+          action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard";
           hotkey-overlay.title = "Noctalia Clipboard History";
         };
         "XF86Calculator".action = spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "calculator";
