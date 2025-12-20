@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  pkgs,
   pkgsFrom,
   lib,
   localLib,
@@ -24,4 +25,7 @@
       }
     )
   );
+  home.packages = lib.mkIf config.programs.noctalia-shell.enable [
+    pkgs.app2unit
+  ];
 }
